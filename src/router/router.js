@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router()
-const { createBranch } = require("../controller/bankController");
+const { createBranch, getProfileForBankUse } = require("../controller/bankController");
 const { createAccount, login, getProfile, updatePassword, forgotPassword, sendMoney, accountBalance, accountStatement, otpGenerate, deleteTransaction, paymentThroughDebitCard } = require("../controller/userController");
-// const { createUser } = require("../controller/userController");
-// const { makePayment } = require("../controller/transactioncotroller");
 
 
 router.post("/createBranch/hdfc/:branch", createBranch);
+router.get("/bank/getProfileForBankUse", getProfileForBankUse);
 
 // -------------- user APIs -----------
 router.post("/user/register", createAccount);

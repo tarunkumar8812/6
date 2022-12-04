@@ -14,6 +14,8 @@ const saketAccountSchema = new mongoose.Schema({
 
     phone: { type: String, required: true, unique: true, trim: true },
 
+    currentBalance: { type: Number, min: 10000 },
+
     loginId: { type: String, required: true },
 
     password: { type: String, required: true },
@@ -49,8 +51,6 @@ const saketAccountSchema = new mongoose.Schema({
     pinNumber: { type: Number, default: null },
 
     expiryDate: { type: String, required: true },
-
-    currentBalance: { type: Number, min: 10000 },
 
     openingDate: { type: Date, default: Date.now() },
 
