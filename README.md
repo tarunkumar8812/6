@@ -12,9 +12,9 @@ In this project, I had created set of API's for user register, user login, get p
 
 
 ### Models
-hdfcBranchModel, hdfcAccountModel, transactionModel
+Branch Model, Account Model, transaction Model
 
-- hdfc Branch Model
+- Branch Model
 ```
 {
 bankFullName: { default:"HOUSING DEVELOPMENT FINANCE CORPORATION LIMITED"}, 
@@ -33,20 +33,38 @@ isDeleted: { type: Boolean, default: false }
 }
 
 ```
-- Blogs Model
+- Account Model
 ```
-{ title: {mandatory,default}, 
-body: {mandatory}, 
-authorId: {mandatory, refs to author model},
-tags: {array of string}, 
-category: {string, mandatory, examples: [technology, entertainment, life style, food, fashion]}, 
-subcategory: {array of string, examples[technology-[web development, mobile development, AI, ML etc]] }, 
-createdAt, 
-updatedAt, 
-deletedAt: {when the document is deleted}, 
-isDeleted: {boolean, default: false}, 
-publishedAt: {when the blog is published}, 
-isPublished: {boolean, default: false}}
+{
+fullName: {mandatory},
+DoB: {mandatory},
+gender: {mandatory,enum: ["MALE", "FEMALE", "Others"]},
+address: {mandatory},
+email: {mandatory},
+phone: {mandatory},
+currentBalance: {mandatory},
+loginId: {mandatory},
+password: {mandatory},
+OTP: {default:null},
+countOTP: {default:0},
+isBlock: {default:null},
+profileImage: {mandatory},
+aadharNumber: {mandatory},
+panCardNumber: {mandatory},
+branchName: {mandatory},
+IFSC:{as per branch}
+accountType: {mandatory},
+accountNumber: {mandatory}, 
+accountStatus: { default: 'DEACTIVATED', enum: ["ACTIVATED", "DEACTIVATED", "SUSPENDED"] }, 
+debitCardStatus: { default: 'DEACTIVATED', enum: ["ACTIVATED", "DEACTIVATED", "SUSPENDED"] },
+cardNumber: {mandatory}, 
+cvvNumber: {mandatory}, 
+pinNumber: {default: null}, 
+expiryDate: {mandatory},
+openingDate: { type: Date, default: Date.now() },
+closingDate: { type: Date, default: null },
+isDeleted: { type: Boolean, default: false }
+}
 ```
 
 ### Author APIs /authors
