@@ -67,6 +67,57 @@ isDeleted: { type: Boolean, default: false }
 }
 ```
 
+- Transaction Model
+```
+{
+bankFullName: {default: "Housing Development Finance Corporation Limited" },
+bankName: { default: "HDFC"},
+bankType: { type: String, default: "PRIVATE" },
+branchName: {mandatory},
+IFSC:{mandatory , as per branch}
+accountNumber: {mandatory}, 
+transactionStatus: { mandatory , enum: ["completed" , "failed" , "cancelled" }
+transactionType:{ }
+amount: { mandatory },
+currentBalance: { mandatory },
+//for reciever details
+beneficiaryName: { type: String,  uppercase: true, trim: true },
+beneficiaryAccountNo: { type: String,  uppercase: true, trim: true },
+beneficiaryIFSC: { type: String,  uppercase: true, trim: true },
+beneficiaryBranch: { type: String,  uppercase: true, trim: true },
+// for sender details
+senderName: { type: String, uppercase: true, trim: true },
+senderAccountNo: { type: String, uppercase: true, trim: true },
+senderIFSC: { type: String, uppercase: true, trim: true },
+senderBranch: { type: String, uppercase: true, trim: true },
+// OTP: { type: String, required: true, trim: true }
+}
+```
+#### APIs...
+### Phase-I
+router.post("/createBranch/hdfc/:branch", createBranch);
+router.post("/user/register", createAccount);
+router.get("/bank/getProfileForBankUse", getProfileForBankUse);
+
+### Phase-II
+router.post("/user/login", login);
+router.get("/user/profile", getProfile);
+router.put("/user/updatePassword", updatePassword);
+router.put("/user/forgotPassword", forgotPassword); 
+router.get("/user/accountBalance", accountBalance);
+router.get("/user/accountStatement", accountStatement);
+
+### Phase-III
+router.put("/user/otpGenerate", otpGenerate);
+
+router.post("/user/sendMoney", sendMoney);
+
+router.post("/user/payment", paymentThroughDebitCard);
+
+
+//router.delete("/user/deleteTransaction", deleteTransaction);
+
+
 ### Author APIs /authors
 - Create an author - atleast 5 authors
 - Create a author document from request body.
