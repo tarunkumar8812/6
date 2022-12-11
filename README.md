@@ -1,5 +1,6 @@
 # Banking System
-In this project, I had created set of API's for creating user, transaction and other.
+In this project, I had created set of API's for user register, user login, get profile, update password, update address, generate debit card pin, add money, send money
+,payments, otp Generate, account Balance, account statement.
 
 
 # Personal
@@ -8,18 +9,33 @@ In this project, I had created set of API's for creating user, transaction and o
 
 ## Phase I
 
+
+
 ### Models
-- Author Model
+hdfcBranchModel, hdfcAccountModel, transactionModel
+
+- hdfc Branch Model
 ```
-{ fname: { mandatory}, 
-lname: {mandatory}, 
-title: {mandatory, enum[Mr, Mrs, Miss]}, 
-email: {mandatory, valid email, unique},
-password: {mandatory} }
+{
+bankFullName: { default:"HOUSING DEVELOPMENT FINANCE CORPORATION LIMITED"}, 
+bankName: { default:"HDFC"}, 
+IFSC: {mandatory}, 
+branchName: {mandatory, unique}, 
+state: {mandatory}, 
+country: {mandatory}, 
+totalAcounts: {default:null},
+accountNumbers: { default:provided by bank},
+cardNumbers: { default:provided by bank},
+balance: {default:null},
+openningDate: { type: Date, default: Date.now() },
+closingDate: { type: Date, default: null },
+isDeleted: { type: Boolean, default: false }
+}
+
 ```
 - Blogs Model
 ```
-{ title: {mandatory}, 
+{ title: {mandatory,default}, 
 body: {mandatory}, 
 authorId: {mandatory, refs to author model},
 tags: {array of string}, 
